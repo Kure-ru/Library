@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital@0;1&display=swap');
+
+:root{
+    --font: 'Lora', serif;
+    --gray: #E5E4E2;
+    --dark-gray: #9f9ea0;
+    --accent: #6667AB;
+}
+
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* ^^^^^
+styling
+^^^^^ */
+
+.page {
+    font-family: var(--font);
+    line-height: 1.5;
+    /* display: flex;
+    flex-direction: column; */
+    position: relative;
+    min-height: 100vh;
+}
+
+.header {
+    font-size: 3rem;
+    font-style: italic;
+    color: var(--accent);
+    display: flex;  
+    border-bottom: 1px solid var(--dark-gray);
+    height: 3.5rem;
+    line-height: 1;
+}
+
+.main {
+    padding-left: 2.5rem;
+    padding-bottom: 2.5rem;
+    height: calc(100vh - 2.5rem - 5.5rem);
+    background-color: var(--gray);
+    
+}
+
+.main__library{
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: repeat(3, 15rem);
+    gap: 1rem;
+    width: 100%;
+}
+
+.main__library article {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    max-width: 200px;
+    padding: 1rem;
+    box-shadow: 3px 8px 20px 5px var(--dark-gray);
+}
+
+.icons {
+    color: var(--dark-gray);
+    align-self: flex-end;
+    font-size: 1.4rem;
+}
+
+.icons ion-icon:hover{
+    
+    color: var(--accent);
+}
+
+.btn__add, .btn__submit{
+    border: none;
+    background-color: var(--accent);
+    color: white;
+    font-family: var(--font);
+    margin: 1rem;
+    padding: 0.5rem;
+
+}
+
+.btn__add:hover{
+    color: var(--accent);
+    background-color: white;
+}
+
+.btn__submit:hover{
+    color: white;
+    background-color: var(--dark-gray)
+}
+
+.footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
+    background-color: var(--accent);
+    border-top: 1px solid var(--dark-gray);
+    color: white;
+}
+
+.footer__link {
+    color: white;
+}
+
+h2,
+legend{
+    font-size: 1.5rem;
+    letter-spacing: 0.11rem;
+    text-transform: uppercase;
+    padding: 1rem;
+    color: var(--accent);
+}
+
+form{
+    display: none;
+    background-color: white;
+    box-shadow: 3px 8px 20px 5px var(--dark-gray);
+    max-width: 300px;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 25%;
+    left: 25%;
+}
+
+
+li {
+    padding: 1rem;
+}
+
