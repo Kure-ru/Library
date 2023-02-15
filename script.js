@@ -4,8 +4,6 @@ const addBtn = document.getElementById("btn__add");
 const form = document.getElementById("form");
 const library = document.getElementById("lib");
 
-
-
 class Book {
   constructor(title, author, pages, genre, category) {
     this.title = form.title.value;
@@ -15,7 +13,6 @@ class Book {
     this.category = form.category.value;
   }
 }
-
 
 //display form
 addBtn.addEventListener("click", (e) => {
@@ -27,7 +24,6 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
   addBookToLibrary();
 });
-
 
 function addBookToLibrary() {
   //hide form
@@ -43,22 +39,22 @@ function addBookToLibrary() {
   //reset form
   form.reset();
   displayBooks();
-  return;
 }
 
 //function editBook
 
+function resetBooks() {
+  library.textContent = " ";
+}
 
 function displayBooks() {
-  //clean books
-  library.textContent = " ";
-  myLibrary.forEach((book) => {
+  resetBooks();
+  myLibrary.forEach((book, index) => {
     const bookContainer = document.createElement("article");
-    bookContainer.setAttribute("id", "book.container");
     bookContainer.innerHTML = `
     <div class="icons">
     <ion-icon name="create-sharp"></ion-icon>
-    <ion-icon class="delete.btn" name="close-circle-sharp"></ion-icon>
+    <ion-icon onclick="deleteBookCard(event)" name="close-circle-sharp"></ion-icon>
     </div>
     <h2>${book.title}</h2> 
     <p>by ${book.author} </p> 
@@ -66,17 +62,15 @@ function displayBooks() {
     <p>${book.genre} </p> 
     <p>${book.category} </p>`;
     library.appendChild(bookContainer);
-
-    const deleteBtn = document.getElementsByClassName("delete.btn");
-    //delete button
-
-    for (let i = 0; i < myLibrary.length; i++){
-      deleteBtn.addEventListener("click", () => {
-      console.log("delete");
-       myLibrary.splice(myLibrary.indexOf(i),1)});
-    }
-
-
+    bookContainer.setAttribute("id", index);
 })
-  };
+}
+
+function deleteBookCard(event)
+{
+  const bookId = event.target.parentNode.parentNode.getAttribute('id');
+  console.log(bookId);
+  myLibrary.splice(bookId, 1);
+  displayBooks();
+};
 
