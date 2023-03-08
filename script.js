@@ -1,9 +1,12 @@
+
 let myLibrary = [];
 
 const addBtn = document.getElementById("btn__add");
 const shelfBtn = document.getElementById("shelf.btn");
 const form = document.getElementById("form");
+const inputs = document.querySelectorAll("input")
 const library = document.getElementById("lib");
+const closeFormBtn = document.querySelector(".top__icon")
 
 class Book {
   constructor(title, author, pages, genre) {
@@ -37,6 +40,14 @@ form.addEventListener("submit", (e) => {
   form.reset();
   displayBooks();
 });
+
+//cancel button to close the form 
+closeFormBtn.addEventListener("click", function() {
+  form.style.display = "none"
+  inputs.forEach(input => {
+    input.value = ""
+  })
+})
 
 //function editBook
 const resetBooks = () => (library.textContent = " ");

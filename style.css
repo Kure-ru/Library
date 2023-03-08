@@ -201,3 +201,29 @@ article button {
     color: white;
 
 }
+
+/* || ADD form */
+
+.addform__top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.top__icon{
+    --ionicon-stroke-width: 32px;
+    color: #6667AB;
+    font-size: 24px;
+}
+.top__icon:hover{
+    color: var(--dark-gray);
+}
+
+.addform__inputs li{
+    display: flex;
+    justify-content: space-between;
+}
+
+.addform__inputs input {
+    width: 50%;
+}
