@@ -1,16 +1,21 @@
 let myLibrary = [];
 
 const addBtn = document.getElementById("btn__add");
+const shelfBtn = document.getElementById("shelf.btn");
 const form = document.getElementById("form");
 const library = document.getElementById("lib");
 
 class Book {
-  constructor(title, author, pages, genre, category) {
-    this.title = form.title.value;
-    this.author = form.author.value;
-    this.pages = form.pages.value;
-    this.genre = form.genre.value;
-    this.category = form.category.value;
+  constructor(title, author, pages, genre) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.genre = genre;
+  }
+
+  addBookToLibrary(book) {
+    myLibrary.push(book);
+    console.log(myLibrary);
   }
 }
 
@@ -22,30 +27,19 @@ addBtn.addEventListener("click", (e) => {
 //submit form
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  addBookToLibrary();
-});
-
-function addBookToLibrary() {
-  //hide form
+  let book = new Book();
+  book.title = form.title.value;
+  book.author = form.author.value;
+  book.pages = form.pages.value;
+  book.genre = form.genre.value;
+  book.addBookToLibrary(book);
   form.style.display = "none";
-  let newBook = new Book(
-    "newTitle",
-    "newAuthor",
-    "newPages",
-    "newGenre",
-    "newCategory"
-  );
-  myLibrary.push(newBook);
-  //reset form
   form.reset();
   displayBooks();
-}
+});
 
 //function editBook
-
-function resetBooks() {
-  library.textContent = " ";
-}
+const resetBooks = () => (library.textContent = " ");
 
 function displayBooks() {
   resetBooks();
@@ -60,17 +54,28 @@ function displayBooks() {
     <p>by ${book.author} </p> 
     <p>${book.pages} pages </p>  
     <p>${book.genre} </p> 
-    <p>${book.category} </p>`;
+   <button onclick="changeShelf(event)" class="want_to_read" id="shelf.btn">want to read</button>
+    `;
+    book.shelfCategory = "want to read";
     library.appendChild(bookContainer);
     bookContainer.setAttribute("id", index);
-})
+  });
 }
 
-function deleteBookCard(event)
-{
-  const bookId = event.target.parentNode.parentNode.getAttribute('id');
-  console.log(bookId);
+function deleteBookCard(event) {
+  const bookId = event.target.parentNode.parentNode.getAttribute("id");
   myLibrary.splice(bookId, 1);
   displayBooks();
-};
+}
 
+function changeShelf(event) {
+  //change button style
+  event.target.classList.toggle("read");
+  event.target.classList.toggle("want_to_read");
+  //change button content
+  if (event.target.classList.contains("read")) {
+    event.target.textContent = "read";
+  } else {
+    event.target.textContent = "want to read";
+  }
+}

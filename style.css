@@ -99,10 +99,13 @@ styling
 .main__library article {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    
     background-color: white;
     max-width: 200px;
-    padding: 1rem;
+    padding: 1.5rem;
     box-shadow: 3px 8px 20px 5px var(--dark-gray);
+    
 }
 
 .icons {
@@ -155,10 +158,13 @@ legend{
     font-size: 1.5rem;
     letter-spacing: 0.11rem;
     text-transform: uppercase;
-    padding: 1rem;
+ 
     color: var(--accent);
 }
 
+legend{
+    padding: 1rem;
+}
 form{
     display: none;
     background-color: white;
@@ -176,3 +182,22 @@ li {
     padding: 1rem;
 }
 
+article button {
+    border: none;
+    font-family: var(--font);
+    padding: 0.5rem 1rem;
+    width: 150px;
+    align-self: center;
+    margin-top: 1rem;
+}
+
+.read{
+    background-color: var(--dark-gray);
+    color: white;
+}
+
+.want_to_read{
+    background-color: var(--accent);
+    color: white;
+
+}
