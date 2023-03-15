@@ -3,10 +3,9 @@
 :root{
     --font: 'Lora', serif;
     --gray: #E5E4E2;
-    --dark-gray: #9f9ea0;
-    --accent: #6667AB;
+    --dark-gray: #abaaaa;
+    --accent: rgb(82, 162, 239);
 }
-
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -57,55 +56,66 @@ table {
 	border-spacing: 0;
 }
 
+
+/* ||Typography */
+
+
+h2, p{
+    padding: 1rem;
+}
+
+button {
+    border-radius: 15px;
+}
+
+
 /* ^^^^^
 styling
 ^^^^^ */
 
 .page {
     font-family: var(--font);
-    line-height: 1.5;
-    /* display: flex;
-    flex-direction: column; */
-    position: relative;
-    min-height: 100vh;
 }
 
 .header {
-    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    font-size: 2.5rem;
     font-style: italic;
-    color: var(--accent);
-    display: flex;  
-    border-bottom: 1px solid var(--dark-gray);
-    height: 3.5rem;
-    line-height: 1;
+    color: var(--dark-gray);
+    padding: 1rem;
 }
 
 .main {
-    padding-left: 2.5rem;
-    padding-bottom: 2.5rem;
-    height: calc(100vh - 2.5rem - 5.5rem);
-    background-color: var(--gray);
-    
+    padding: 1rem;
+
 }
 
+.main__btn {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 5rem;
+    width: 100%;
+    z-index: -1;
+
+}
 .main__library{
     display: grid;
     grid-template-columns: repeat(4, auto);
-    grid-template-rows: repeat(3, 15rem);
+    grid-template-rows: repeat(3, auto);
     gap: 1rem;
-    width: 100%;
 }
 
 .main__library article {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
-    background-color: white;
     max-width: 200px;
-    padding: 1.5rem;
-    box-shadow: 3px 8px 20px 5px var(--dark-gray);
-    
+    padding: .5rem;
+    border: 1px solid var(--dark-gray);
+    border-radius: 15px;
+    background: var(--gray);
 }
 
 .icons {
@@ -115,7 +125,6 @@ styling
 }
 
 .icons ion-icon:hover{
-    
     color: var(--accent);
 }
 
@@ -125,8 +134,7 @@ styling
     color: white;
     font-family: var(--font);
     margin: 1rem;
-    padding: 0.5rem;
-
+    padding: 1rem;
 }
 
 .btn__add:hover{
@@ -145,8 +153,9 @@ styling
     width: 100%;
     height: 2.5rem;
     background-color: var(--accent);
-    border-top: 1px solid var(--dark-gray);
     color: white;
+    display: flex;
+    justify-content: center;
 }
 
 .footer__link {
@@ -157,24 +166,25 @@ h2,
 legend{
     font-size: 1.5rem;
     letter-spacing: 0.11rem;
-    text-transform: uppercase;
- 
     color: var(--accent);
 }
 
 legend{
     padding: 1rem;
 }
+
 form{
     display: none;
-    background-color: white;
-    box-shadow: 3px 8px 20px 5px var(--dark-gray);
+    background: white;
+    border: 1px solid var(--dark-gray);
+    padding: 1rem;
+    border-radius: 15px;
     max-width: 300px;
     justify-content: space-between;
     align-items: center;
     position: absolute;
-    top: 25%;
-    left: 25%;
+    top: 5rem;
+    z-index: 99;
 }
 
 
@@ -204,26 +214,31 @@ article button {
 
 /* || ADD form */
 
+
 .addform__top {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
+    z-index: 3;
 }
 
 .top__icon{
     --ionicon-stroke-width: 32px;
-    color: #6667AB;
+    color: var(--accent);
     font-size: 24px;
 }
 .top__icon:hover{
     color: var(--dark-gray);
 }
 
+label {
+    padding-bottom: 0.5rem;
+}
 .addform__inputs li{
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    color: var(--dark-gray);
 }
 
-.addform__inputs input {
-    width: 50%;
-}

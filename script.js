@@ -49,7 +49,7 @@ closeFormBtn.addEventListener("click", function() {
   })
 })
 
-//function editBook
+
 const resetBooks = () => (library.textContent = " ");
 
 function displayBooks() {
@@ -58,7 +58,7 @@ function displayBooks() {
     const bookContainer = document.createElement("article");
     bookContainer.innerHTML = `
     <div class="icons">
-    <ion-icon name="create-sharp"></ion-icon>
+
     <ion-icon onclick="deleteBookCard(event)" name="close-circle-sharp"></ion-icon>
     </div>
     <h2>${book.title}</h2> 
@@ -90,3 +90,5 @@ function changeShelf(event) {
     event.target.textContent = "want to read";
   }
 }
+
+    // <ion-icon name="create-sharp"></ion-icon>
