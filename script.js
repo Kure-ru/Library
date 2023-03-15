@@ -1,94 +1,58 @@
+// sign in
+const form = document.querySelector(".form-wrapper");
+const email = document.querySelector("#email");
+const emailError = document.querySelector("#emailError");
+const password = document.querySelector("#password");
+const passwordConfirmation = document.querySelector("#passwordConfirmation");
+const passwordError = document.querySelector("#passwordError");
 
-let myLibrary = [];
-
-const addBtn = document.getElementById("btn__add");
-const shelfBtn = document.getElementById("shelf.btn");
-const form = document.getElementById("form");
-const inputs = document.querySelectorAll("input")
-const library = document.getElementById("lib");
-const closeFormBtn = document.querySelector(".top__icon")
-
-class Book {
-  constructor(title, author, pages, genre) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.genre = genre;
+passwordConfirmation.addEventListener("input", (event) => {
+  console.log("password");
+  if (password.value !== passwordConfirmation.value) {
+    passwordError.textContent = "Passwords need to be identical";
+    passwordError.className = "error active";
+  } else if (password.validity.tooShort) {
+    passwordError.textContent = `Password should be at least ${password.minLength} characters; you entered ${password.value.length}.`;
+    passwordError.className = "error active";
+  } else if (password.validity.valid) {
+    passwordError.textContent = "";
+    passwordError.className = "error";
   }
-
-  addBookToLibrary(book) {
-    myLibrary.push(book);
-    console.log(myLibrary);
-  }
-}
-
-//display form
-addBtn.addEventListener("click", (e) => {
-  form.style.display = "flex";
 });
 
-//submit form
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  let book = new Book();
-  book.title = form.title.value;
-  book.author = form.author.value;
-  book.pages = form.pages.value;
-  book.genre = form.genre.value;
-  book.addBookToLibrary(book);
-  form.style.display = "none";
-  form.reset();
-  displayBooks();
-});
-
-//cancel button to close the form 
-closeFormBtn.addEventListener("click", function() {
-  form.style.display = "none"
-  inputs.forEach(input => {
-    input.value = ""
-  })
-})
-
-
-const resetBooks = () => (library.textContent = " ");
-
-function displayBooks() {
-  resetBooks();
-  myLibrary.forEach((book, index) => {
-    const bookContainer = document.createElement("article");
-    bookContainer.innerHTML = `
-    <div class="icons">
-
-    <ion-icon onclick="deleteBookCard(event)" name="close-circle-sharp"></ion-icon>
-    </div>
-    <h2>${book.title}</h2> 
-    <p>by ${book.author} </p> 
-    <p>${book.pages} pages </p>  
-    <p>${book.genre} </p> 
-   <button onclick="changeShelf(event)" class="want_to_read" id="shelf.btn">want to read</button>
-    `;
-    book.shelfCategory = "want to read";
-    library.appendChild(bookContainer);
-    bookContainer.setAttribute("id", index);
-  });
-}
-
-function deleteBookCard(event) {
-  const bookId = event.target.parentNode.parentNode.getAttribute("id");
-  myLibrary.splice(bookId, 1);
-  displayBooks();
-}
-
-function changeShelf(event) {
-  //change button style
-  event.target.classList.toggle("read");
-  event.target.classList.toggle("want_to_read");
-  //change button content
-  if (event.target.classList.contains("read")) {
-    event.target.textContent = "read";
+email.addEventListener("input", (event) => {
+  //check validity of email
+  if (email.validity.valid) {
+    emailError.textContent = "";
+    emailError.className = "error";
   } else {
-    event.target.textContent = "want to read";
+    showError(email, emailError);
+  }
+});
+
+form.addEventListener("submit", (event) => {
+  // if the email field is valid, we let the form submit
+  if (
+    !email.validity.valid ||
+    !password.validity.valid
+  ) {
+    // If it isn't, we display an appropriate error message
+    showError();
+    // Then we prevent the form from being sent by canceling the event
+    event.preventDefault();
+    window.location.href = 'mybooks.html'
+  }
+});
+
+function showError(input, inputError) {
+  console.log(input);
+  if (input.validity.valueMissing) {
+    inputError.textContent = "You need to enter an email address.";
+  } else if (input.validity.typeMismatch) {
+    inputError.textContent = "Entered value needs to be an email address.";
+  } else if (input.validity.tooShort) {
+    inputError.textContent = `Email should be at least ${email.minLength} characters; you entered ${email.value.length}.`;
+
+    inputError.className = "error active";
   }
 }
-
-    // <ion-icon name="create-sharp"></ion-icon>

@@ -58,8 +58,12 @@ table {
 
 
 /* ||Typography */
-
-
+h1{
+    font-size: 2.5rem;
+    color: var(--dark-gray);
+    padding: 1rem;
+    font-style: italic;
+}
 h2, p{
     padding: 1rem;
 }
@@ -80,10 +84,8 @@ styling
 .header {
     display: flex;
     justify-content: center;
-    font-size: 2.5rem;
-    font-style: italic;
-    color: var(--dark-gray);
-    padding: 1rem;
+    align-items: center;
+
 }
 
 .main {
@@ -118,6 +120,11 @@ styling
     background: var(--gray);
 }
 
+.header__icon {
+color: var(--dark-gray);
+font-size: 2rem;
+}
+ 
 .icons {
     color: var(--dark-gray);
     align-self: flex-end;
@@ -173,7 +180,7 @@ legend{
     padding: 1rem;
 }
 
-form{
+.addform{
     display: none;
     background: white;
     border: 1px solid var(--dark-gray);
@@ -242,3 +249,75 @@ label {
     color: var(--dark-gray);
 }
 
+/* || Sign in form */
+
+.form-wrapper{
+    padding: 2rem;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.form-wrapper span {
+    color: var(--dark-gray);
+    font-size: .8rem;
+}
+
+.field{
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.field__input:invalid{
+    border-color: #900;
+    background: #fdd;
+}
+
+.field__btns{
+    display: flex;
+    padding: 1rem;
+}
+.field__btn{
+   margin-right: 1rem;
+   margin-bottom: 1.5rem;
+   color: white; 
+   width: 5rem;
+   padding: 8px;
+   border-radius: 10px;
+   text-align: center;
+   border: none;
+   cursor: pointer;
+}
+
+.skip{
+    width: 4rem;
+    background: var(--dark-gray);
+    
+}
+
+.skip a {
+    text-decoration: none;
+    color: white;
+}
+
+.confirm{
+    background: var(--accent);
+}
+/* 
+||error messages */
+
+/* This is the style of our error messages */
+.error {
+    width: 100%;
+    padding: 0;
+    font-size: 80%;
+    color: white;
+    background-color: #900;
+    border-radius: 0 0 5px 5px;
+    box-sizing: border-box;
+  }
+  
+  .error.active {
+    padding: 0.3em;
+  }

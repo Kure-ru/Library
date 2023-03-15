@@ -4,8 +4,14 @@ library project inspired by [The Odin Project](/www.theodinproject.com)
 
 ## What I learned
 
+###CSS
+
+
+### Javascript
 - Objects and objects constructors
 - Classes
+- [Form validation with JavaScript](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation#validating_forms_using_javascript)
+
 
 ## What I wish to improve next
 
